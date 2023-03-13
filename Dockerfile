@@ -4,8 +4,6 @@ WORKDIR /app
 RUN apk update
 RUN apk add libc6-compat git build-base
 
-RUN git config --global url."https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
-
 COPY go.mod go.sum ./
 
 RUN go mod download

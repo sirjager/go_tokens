@@ -8,7 +8,6 @@ COPY go.mod go.sum ./
 
 RUN go mod download
 
-COPY ./db ./db
 COPY ./cmd ./cmd
 COPY ./cfg ./cfg
 COPY ./pkg ./pkg

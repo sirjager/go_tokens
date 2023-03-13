@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package tokens;
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+
+import "rpc-health.tokens.proto";
+import "rpc-welcome.tokens.proto";
+import "rpc-create.tokens.proto";
+import "rpc-verify.tokens.proto";
+
+ 
+option go_package = "github.com/sirjager/rpcs/tokens";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+    info: { 
+        title: "Tokens Api";
+        version: "0.2";
+        contact: {
+            name:   "Ankur Kumar";
+            url: "https://github.com/sirjager";
+        };
+    };
+};
+
+service Tokens {
+    //------------------------------------------------------ System
+    rpc TokensWelcome(TokensWelcomeRequest) returns (TokensWelcomeResponse) {
+        option (google.api.http) = {
+            get: "/"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "returs a welcome message";
+            summary: "Welcome Message";
+            tags: "System";
+        };
+    }
+    rpc TokensHealth(TokensHealthRequest) returns (TokensHealthResponse) {
+        option (google.api.http) = {
+            get: "/health"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "use this route to check if api is working or not";
+            summary: "Api Health";
+            tags: "System";
+        };
+    }
+
+// ------------------------------------------------------------ Create
+    rpc TokensCreate(TokensCreateRequest) returns (TokensCreateResponse) {
+        option (google.api.http) = {
+            post: "/v1/create"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "use this route to create token";
+            summary: "Create Token";
+            tags: "Tokens";
+        };
+    }
+
+
+// ------------------------------------------------------------ Verify
+    rpc TokensVerify(TokensVerifyRequest) returns (TokensVerifyResponse) {
+        option (google.api.http) = {
+            post: "/v1/verify"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "use this router to verify token";
+            summary: "Verify Token";
+            tags: "Tokens";
+        };
+    }
+
+}

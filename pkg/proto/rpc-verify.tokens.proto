@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package tokens;
+
+import "payload.tokens.proto";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/sirjager/rpcs/tokens";
+
+
+message TokensVerifyRequest { string token = 1; }
+
+message TokensVerifyResponse {
+    string id = 1;
+    google.protobuf.Timestamp iat = 2;
+    google.protobuf.Timestamp expires = 3;
+    TokensPayloadData payload = 4;
+}

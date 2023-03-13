@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package tokens;
+
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+option go_package = "github.com/sirjager/rpcs/tokens";
+
+message TokensHealthRequest {}
+
+message TokensHealthResponse {
+  string status = 1;
+  bool protected = 3;
+  google.protobuf.Duration uptime = 4;
+  google.protobuf.Timestamp started = 5;
+  google.protobuf.Timestamp timestamp = 6;
+}

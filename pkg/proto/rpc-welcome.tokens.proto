@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package tokens;
+
+option go_package = "github.com/sirjager/rpcs/tokens";
+
+message TokensWelcomeRequest {}
+
+message TokensWelcomeResponse { string message = 1; }

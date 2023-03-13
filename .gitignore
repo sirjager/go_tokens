@@ -1,0 +1,12 @@
+.env
+*.env
+.temp
+.tmp
+temp
+!local.env
+!example.env
+.venv/
+venv/
+vendor
+data
+dist/

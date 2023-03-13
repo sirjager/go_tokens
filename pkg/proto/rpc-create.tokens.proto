@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package tokens;
+
+import "payload.tokens.proto";
+
+option go_package = "github.com/sirjager/rpcs/tokens";
+
+
+message TokensCreateRequest {string payload = 1; }
+
+message TokensCreateResponse {
+    string token = 1;
+    TokensPayload payload = 2;
+}

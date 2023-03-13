@@ -31,8 +31,9 @@ proto:
 
 
 tidy:
-	go get github.com/sirjager/rpcs@latest
+	rm -f ./go.sum
 	rm -rf ./vendor
+	go get github.com/sirjager/rpcs@latest
 	go mod tidy
 	go mod vendor
 
